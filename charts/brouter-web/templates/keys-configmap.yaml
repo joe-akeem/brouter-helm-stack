@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: brouter-web-keys
+data:
+  keys.js: |
+    {{ .Values.configFiles.keys | nindent 4 }}

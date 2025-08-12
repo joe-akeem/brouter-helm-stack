@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: brouter-web-config
+data:
+  config.js: |
+    {{ .Values.configFiles.config | nindent 4 }}
