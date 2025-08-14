@@ -8,5 +8,5 @@ helm repo add brouter-web https://joe-akeem.github.io/helm-brouter-web/
 
 List the available charts:
 ```shell
-helm search repo brouter-web
+helm search repo brouter
 ```
