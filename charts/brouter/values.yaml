@@ -89,8 +89,11 @@ autoscaling:
 
 # Additional volumes on the output Deployment definition.
 volumes:
+  # consider making each of these a persistentVolumeClaim so the segments and profiles don't need to be downloaded again after a restart
   - name: segments4
-    emptyDir: {} # consider making this a persistentVolumeClaim so the segments don't need to be downloaded again after a restart
+    emptyDir: {}
+  - name: profiles
+    emptyDir: {}
 # - name: foo
 #   secret:
 #     secretName: mysecret
@@ -100,6 +103,8 @@ volumes:
 volumeMounts:
   - name: segments4
     mountPath: /segments4
+  - name: profiles
+    mountPath: /profiles2
 # - name: foo
 #   mountPath: "/etc/foo"
 #   readOnly: true
@@ -110,7 +115,7 @@ tolerations: []
 
 affinity: {}
 
-segmentsSidecar:
+loader:
   image:
     containerName: segments
     repository: arunvelsriram/utils
@@ -123,5 +128,7 @@ segmentsSidecar:
   downloadScript: |
     while true; do
       wget -N -P /segments4 https://brouter.de/brouter/segments4/E5_N45.rd5;
+      wget -N -P /profiles2 https://bikerouter.de/profiles/Fastbike-lowtraffic-tertiaries.brf
+      wget -N -P /profiles2 https://github.com/zossebart/brouter-mtb/archive/refs/tags/v1.2.3.tar.gz; tar --strip-components=1 -xzf /profiles2/v1.2.3.tar.gz -C /profiles2
       sleep {{ .Values.sync.intervalSeconds }};
     done

@@ -50,17 +50,17 @@ spec:
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-        - name: {{ .Values.segmentsSidecar.image.containerName }}
-          image: {{ .Values.segmentsSidecar.image.repository }}:{{ .Values.segmentsSidecar.image.tag }}
-          imagePullPolicy: {{ .Values.segmentsSidecar.image.pullPolicy }}
+        - name: {{ .Values.loader.image.containerName }}
+          image: {{ .Values.loader.image.repository }}:{{ .Values.loader.image.tag }}
+          imagePullPolicy: {{ .Values.loader.image.pullPolicy }}
           {{- with .Values.volumeMounts }}
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
           command:
-            {{- toYaml .Values.segmentsSidecar.command | nindent 12 }}
+            {{- toYaml .Values.loader.command | nindent 12 }}
           args:
-            - {{ .Values.segmentsSidecar.downloadScript | quote }}
+            - {{ .Values.loader.downloadScript | quote }}
       {{- with .Values.volumes }}
       volumes:
         {{- toYaml . | nindent 8 }}
