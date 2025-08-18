@@ -87,27 +87,17 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-# Additional volumes on the output Deployment definition.
 volumes:
-  # consider making each of these a persistentVolumeClaim so the segments and profiles don't need to be downloaded again after a restart
   - name: segments4
     emptyDir: {}
   - name: profiles
     emptyDir: {}
-# - name: foo
-#   secret:
-#     secretName: mysecret
-#     optional: false
 
-# Additional volumeMounts on the output Deployment definition.
 volumeMounts:
   - name: segments4
     mountPath: /segments4
   - name: profiles
     mountPath: /profiles2
-# - name: foo
-#   mountPath: "/etc/foo"
-#   readOnly: true
 
 nodeSelector: {}
 
@@ -122,7 +112,6 @@ loader:
     pullPolicy: IfNotPresent
     tag: v1.5.0
   command: ["sh", "-c"]
-  intervalSeconds: 259200 # 3 days
 
   # for an overview which segments to download, see https://umap.openstreetmap.de/de/map/brouter-rd5-grid_9438#2/35.0/5.1
   downloadScript: |
@@ -130,5 +119,5 @@ loader:
       wget -N -P /segments4 https://brouter.de/brouter/segments4/E5_N45.rd5;
       wget -N -P /profiles2 https://bikerouter.de/profiles/Fastbike-lowtraffic-tertiaries.brf
       wget -N -P /profiles2 https://github.com/zossebart/brouter-mtb/archive/refs/tags/v1.2.3.tar.gz; tar --strip-components=1 -xzf /profiles2/v1.2.3.tar.gz -C /profiles2
-      sleep {{ .Values.sync.intervalSeconds }};
+      sleep 259200;
     done
