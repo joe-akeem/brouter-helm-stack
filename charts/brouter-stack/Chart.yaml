@@ -8,9 +8,9 @@ version: 0.2.0
 
 dependencies:
   - name: brouter
-    version: 0.2.1
+    version: 0.2.0
     repository: "https://joe-akeem.github.io/brouter-helm-stack/"
   - name: brouter-web
-    version: 0.1.0
+    version: 0.0.1
     repository: "https://joe-akeem.github.io/brouter-helm-stack/"
 
