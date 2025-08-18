@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name:  profiles-pv
+spec:
+  capacity:
+    storage: {{ .Values.profiles.capacity.storage }}
+  {{- with .Values.profiles.accessModes }}
+  accessModes:
+    {{-  toYaml . | nindent 4 }}
+  {{- end }}
+  hostPath:
+    path: {{ .Values.profiles.hostPath }}
+  storageClassName: {{ .Values.profiles.storageClassName }}

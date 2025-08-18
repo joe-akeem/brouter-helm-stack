@@ -8,17 +8,9 @@ kind create cluster --config kind-config.yaml
 kubectl config use-context kind-kind
 ```
 
-Create a persistent volume to save the routing profiles that are used by BRouter and BRouter Web.
-For testing the `profiles-pv.yaml` manifest can be used. Also create a persistent volume claim that
-can be used by both, BRouter and BRouter Web.
-```shell
-kubectl apply -f profiles-pv.yaml
-kubectl apply -f profiles-pvc.yaml
-```
-
 Add the helm repository:
 ```shell
-helm repo add brouter-web https://joe-akeem.github.io/brouter-helm-stack/
+helm repo add brouter-stack https://joe-akeem.github.io/brouter-helm-stack/
 ```
 
 List the available charts:
@@ -26,22 +18,28 @@ List the available charts:
 helm search repo brouter
 ```
 
-To start the whole stack, including frontend and backend, install the umbrella chart from the repository:
+To start the whole stack, including frontend and backend, install the umbrella chart from the helm repository:
 ```shell
-helm install brouter-stack brouter/brouter-stack
+helm install brouter-stack brouter-stack/brouter-stack
+```
+
+Installing the helm chart from this GitHub repository:
+```shell
+helm dependency build ./charts/brouter-stack
+helm install brouter-stack ./charts/brouter-stack
 ```
 
 The BRouter app has a sidecar component which downloads routing profile and segment data. To specify which segments
 and profiles to download, update `loader.downloadScript` in the `values.yaml`. The files are updated on a regular basis
-if needed. Update `loader.intervalSeconds` to change the update interval.
+if needed.
 
 For local testing, setup port forwarding:
 ```shell
-kubectl port-forward service/brouter-web 8090:80
-kubectl port-forward service/brouter 17777:17777
+kubectl port-forward service/brouter-stack-brouter-web 8090:80
+kubectl port-forward service/brouter-stack 17777:17777
 ```
 
 When done, delete the kind cluster.
-```
+```shell
 kind delete cluster
 ```

@@ -86,7 +86,6 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-# Additional volumes on the output Deployment definition.
 volumes:
   - name: keys-volume
     configMap:
@@ -94,12 +93,7 @@ volumes:
   - name: config-volume
     configMap:
       name: brouter-web-config
-# - name: foo
-#   secret:
-#     secretName: mysecret
-#     optional: false
 
-# Additional volumeMounts on the output Deployment definition.
 volumeMounts:
   - name: keys-volume
     mountPath: /usr/share/nginx/html/keys.js
@@ -107,9 +101,6 @@ volumeMounts:
   - name: config-volume
     mountPath: /usr/share/nginx/html/config.js
     subPath: config.js
-# - name: foo
-#   mountPath: "/etc/foo"
-#   readOnly: true
 
 nodeSelector: {}
 
@@ -174,7 +165,7 @@ configFiles:
             // local web server with the profiles in a subdirectory or allowing file access
             // in the Browser (security!), see
             // https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally
-            BR.conf.profilesUrl = 'http://localhost:8000/profiles2/';
+            BR.conf.profilesUrl = 'http://localhost:8090/profiles2/';
             //BR.conf.profilesUrl = 'file://YOUR_PATH_TO/profiles2/';
         }
     
