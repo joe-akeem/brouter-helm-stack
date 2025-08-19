@@ -32,7 +32,7 @@ jobs:
       - name: Release brouter-stack
         uses: helm/chart-releaser-action@v1.7.0
         with:
-          charts_dir: brouter-stack-chart
+          charts_dir: brouter-stack-charts
           skip_existing: true
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
