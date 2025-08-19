@@ -15,6 +15,7 @@ helm repo add brouter-stack https://joe-akeem.github.io/brouter-helm-stack/
 
 List the available charts:
 ```shell
+helm repo update
 helm search repo brouter
 ```
 
