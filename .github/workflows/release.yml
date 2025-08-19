@@ -21,17 +21,11 @@ jobs:
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
-      - name: Release brouter
+      - name: Release brouter and brouter-web charts
         uses: helm/chart-releaser-action@v1.7.0
         with:
-          charts_dir: charts/brouter
+          charts_dir: brouter/charts
           skip_existing: true
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-      - name: Release brouter-web
-        uses: helm/chart-releaser-action@v1.7.0
-        with:
-          charts_dir: charts/brouter-web
-          skip_existing: true
-        env:
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
