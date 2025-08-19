@@ -13,6 +13,22 @@ entries:
     version: 0.2.2
   brouter-stack:
   - apiVersion: v2
+    created: "2025-08-19T12:55:22.761237053Z"
+    dependencies:
+    - name: brouter
+      repository: https://joe-akeem.github.io/brouter-helm-stack/
+      version: 0.2.2
+    - name: brouter-web
+      repository: https://joe-akeem.github.io/brouter-helm-stack/
+      version: 0.1.2
+    description: Combined BRouter frontend and backend
+    digest: aaef8a8fdfc32b6b8b57fc7232587e4680774b23788696eead747698c55b14ca
+    name: brouter-stack
+    type: application
+    urls:
+    - https://github.com/joe-akeem/brouter-helm-stack/releases/download/brouter-stack-0.2.2/brouter-stack-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
     created: "2025-08-19T12:32:31.72658917Z"
     dependencies:
     - name: brouter
@@ -65,4 +81,4 @@ entries:
     urls:
     - https://github.com/joe-akeem/brouter-helm-stack/releases/download/brouter-web-0.1.1/brouter-web-0.1.1.tgz
     version: 0.1.1
-generated: "2025-08-19T12:32:31.726616291Z"
+generated: "2025-08-19T12:55:22.761258102Z"
