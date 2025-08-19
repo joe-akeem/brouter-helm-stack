@@ -25,8 +25,8 @@ helm install brouter-stack brouter-stack/brouter-stack
 
 Installing the helm chart from this GitHub repository:
 ```shell
-helm dependency build ./charts/brouter-stack
-helm install brouter-stack ./charts/brouter-stack
+helm dependency build ./brouter-stack-charts/brouter-stack
+helm install brouter-stack ./brouter-stack-charts/brouter-stack
 ```
 
 The BRouter app has a sidecar component which downloads routing profile and segment data. To specify which segments

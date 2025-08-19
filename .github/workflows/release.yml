@@ -29,7 +29,14 @@ jobs:
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
-      - name: Release brouter-stack
+      - name: Update Helm dependencies for brouter-stack
+        run: |
+          helm repo add brouter-stack https://joe-akeem.github.io/brouter-helm-stack/
+          helm repo update
+          cd brouter-stack-charts/brouter-stack
+          helm dependency update
+
+      - name: Release brouter-stack charts
         uses: helm/chart-releaser-action@v1.7.0
         with:
           charts_dir: brouter-stack-charts

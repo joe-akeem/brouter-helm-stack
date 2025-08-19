@@ -13,4 +13,3 @@ dependencies:
   - name: brouter-web
     version: 0.1.1
     repository: "https://joe-akeem.github.io/brouter-helm-stack/"
-
