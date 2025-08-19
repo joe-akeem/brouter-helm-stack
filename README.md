@@ -40,6 +40,20 @@ kubectl port-forward service/brouter-stack-brouter-web 8090:80
 kubectl port-forward service/brouter-stack 17777:17777
 ```
 
+When updating the dependencies in brouter-stack-charts/brouter-stack/Chart.yaml make sure to run
+```shell
+helm dependency update brouter-stack-charts/brouter-stack
+```
+so that brouter-stack-charts/brouter-stack/Chart.lock gets updated too.
+
+Compare the installed chart version with the ones available in the repo and upgrade if needed:
+```shell
+helm repo update
+helm search repo brouter
+helm list
+helm upgrade brouter-stack brouter-stack/brouter
+```
+
 When done, delete the kind cluster.
 ```shell
 kind delete cluster
