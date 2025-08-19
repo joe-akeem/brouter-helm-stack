@@ -51,4 +51,4 @@ brouter-web:
       mountPath: /usr/share/nginx/html/config.js
       subPath: config.js
     - name: profiles
-      mountPath: /usr/share/nginx/html/profiles
+      mountPath: /usr/share/nginx/html/profiles2
