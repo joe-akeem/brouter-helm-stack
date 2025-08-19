@@ -4,6 +4,6 @@ dependencies:
   version: 0.2.2
 - name: brouter-web
   repository: https://joe-akeem.github.io/brouter-helm-stack/
-  version: 0.1.1
-digest: sha256:46f7e879848ac5838b1d1a86feb0ad838f570c94e5424d9b0085596fadb6b181
-generated: "2025-08-19T13:57:03.740932+02:00"
+  version: 0.1.2
+digest: sha256:460cbcd67f92d0412aadf3964059e90d5456b382d012ef3280b5eb98b3dcb0f8
+generated: "2025-08-19T14:31:27.626059+02:00"
