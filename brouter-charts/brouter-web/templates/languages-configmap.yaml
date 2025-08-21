@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: brouter-web-languages
+data:
+{{- range .Values.languages }}
+  {{ .name }}: |
+{{ .content | indent 4 }}
+{{- end }}
+
