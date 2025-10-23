@@ -1,7 +1,3 @@
-# Default values for brouter-stack.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
 nameOverride: ""
 fullnameOverride: ""
 
@@ -29,7 +25,7 @@ brouter:
     - name: segments4
       mountPath: /segments4
     - name: profiles
-      mountPath: /profiles2
+      mountPath: /profiles3
 
 brouter-web:
   volumes:
@@ -51,4 +47,4 @@ brouter-web:
       mountPath: /usr/share/nginx/html/config.js
       subPath: config.js
     - name: profiles
-      mountPath: /usr/share/nginx/html/profiles2
+      mountPath: /usr/share/nginx/html/profiles3

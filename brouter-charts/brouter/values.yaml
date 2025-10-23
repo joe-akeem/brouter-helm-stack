@@ -12,7 +12,7 @@ image:
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: ""
+fullnameOverride: brouter-stack-brouter
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -73,12 +73,16 @@ resources: {}
 
 livenessProbe:
   httpGet:
-    path: /
+    path: "/brouter?lonlats=8.516421,47.331518|8.516679,47.329661&profile=trekking&format=geojson"
     port: 17777
+  initialDelaySeconds: 10
+  failureThreshold: 3
 readinessProbe:
   httpGet:
-    path: /
+    path: "/brouter?lonlats=8.516421,47.331518|8.516679,47.329661&profile=trekking&format=geojson"
     port: 17777
+  initialDelaySeconds: 10
+  failureThreshold: 3
 
 autoscaling:
   enabled: false
@@ -97,7 +101,7 @@ volumeMounts:
   - name: segments4
     mountPath: /segments4
   - name: profiles
-    mountPath: /profiles2
+    mountPath: /profiles3
 
 nodeSelector: {}
 
@@ -112,12 +116,12 @@ loader:
     pullPolicy: IfNotPresent
     tag: v1.5.0
   command: ["sh", "-c"]
-
   # for an overview which segments to download, see https://umap.openstreetmap.de/de/map/brouter-rd5-grid_9438#2/35.0/5.1
+
   downloadScript: |
     while true; do
       wget -N -P /segments4 https://brouter.de/brouter/segments4/E5_N45.rd5;
-      wget -N -P /profiles2 https://bikerouter.de/profiles/Fastbike-lowtraffic-tertiaries.brf
-      wget -N -P /profiles2 https://github.com/zossebart/brouter-mtb/archive/refs/tags/v1.2.3.tar.gz; tar --strip-components=1 -xzf /profiles2/v1.2.3.tar.gz -C /profiles2
+      wget -N -P /profiles3 https://bikerouter.de/profiles/Fastbike-lowtraffic-tertiaries.brf
+      wget -N -P /profiles3 https://github.com/zossebart/brouter-mtb/archive/refs/tags/v1.2.3.tar.gz; tar --strip-components=1 -xzf /profiles3/v1.2.3.tar.gz -C /profiles3
       sleep 259200;
     done

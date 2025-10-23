@@ -1,4 +1,4 @@
-# helm-brouter-web
+# brouter-helm-stack
 Helm charts for [BRouter](https://github.com/abrensch/brouter) and [brouter-web](https://github.com/nrenner/brouter-web)
 and an umbrella chart that combines the two.
 
@@ -37,7 +37,7 @@ if needed.
 For local testing, setup port forwarding:
 ```shell
 kubectl port-forward service/brouter-stack-brouter-web 8090:80
-kubectl port-forward service/brouter-stack 17777:17777
+kubectl port-forward service/brouter-stack-brouter 17777:17777
 ```
 
 When updating the dependencies in brouter-stack-charts/brouter-stack/Chart.yaml make sure to run
