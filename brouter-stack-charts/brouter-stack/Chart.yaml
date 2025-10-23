@@ -4,11 +4,11 @@ description: Combined BRouter frontend and backend
 
 type: application
 
-version: 0.3.0
+version: 0.3.2
 
 dependencies:
   - name: brouter
-    version: 0.3.0
+    version: 0.3.1
 #    repository: "file://../../brouter-charts/brouter"
     repository: "https://joe-akeem.github.io/brouter-helm-stack/"
   - name: brouter-web
