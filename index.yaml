@@ -141,6 +141,16 @@ entries:
   brouter-web:
   - apiVersion: v2
     appVersion: 0.18.1
+    created: "2025-10-31T18:25:39.841891905Z"
+    description: BRouter Web Frontend
+    digest: 0a75199da8498b07706c3f8a6785a449e97bab7ec8e7dfaec99a7c4c96d5e650
+    name: brouter-web
+    type: application
+    urls:
+    - https://github.com/joe-akeem/brouter-helm-stack/releases/download/brouter-web-0.3.1/brouter-web-0.3.1.tgz
+    version: 0.3.1
+  - apiVersion: v2
+    appVersion: 0.18.1
     created: "2025-10-23T19:41:26.159117972Z"
     description: BRouter Web Frontend
     digest: fc3b378f20b3278ac779ebf1f398bfebc8e6eb2a594613d0aadca974185620ae
@@ -179,4 +189,4 @@ entries:
     urls:
     - https://github.com/joe-akeem/brouter-helm-stack/releases/download/brouter-web-0.1.1/brouter-web-0.1.1.tgz
     version: 0.1.1
-generated: "2025-10-31T18:24:25.290056677Z"
+generated: "2025-10-31T18:25:39.841929886Z"
